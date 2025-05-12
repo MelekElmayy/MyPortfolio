@@ -1,0 +1,167 @@
+.chat-io-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #333;
+}
+
+.project-top-section {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.project-intro {
+  flex: 1;
+  min-width: 500px;
+}
+
+.project-demo {
+  flex: 2;
+  min-width: 0; /* Allows the flex item to shrink below its minimum content size */
+  margin-left: 110px;
+  
+}
+
+.demo-gif {
+  width: 700px;
+  height: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-top: 90px;
+}
+
+h1 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #7f8c8d;
+  font-size: 1.7rem;
+  margin-bottom: 1.5rem;
+}
+
+
+
+.tech-stack {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.tech-pill {
+  padding: 0.7rem 1.5rem;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+}
+
+.tech-pill.react {
+  background-color: #61dafb;
+  color: #282c34;
+}
+
+.tech-pill.appwrite {
+  background-color: #f02e65;
+}
+
+.tech-pill.css {
+  background-color: #2965f1;
+}
+
+.tech-pill.socket {
+  background-color: #010101;
+}
+
+.brief-description {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.link-button {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.link-button:hover {
+  background-color: #2980b9;
+}
+
+.project-details {
+  margin-top: 2rem;
+
+}
+
+.project-details p{
+  font-size: 20px;
+  font-weight: 600;
+  background-color: #29e0f163;
+    padding: 6px;
+}
+
+
+
+.project-section {
+  margin-bottom: 2.5rem;
+  
+}
+
+.project-section h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.features-list {
+  padding-left: 1.2rem;
+  columns: 2;
+  column-gap: 2rem;
+
+}
+
+.features-list li {
+  margin-bottom: 0.5rem;
+  break-inside: avoid;
+  font-size: 20px;
+  background-color: #29c9f145;
+  border-radius: 5px;
+  padding: 4px;
+
+}
+
+.technical-details p,
+.challenges p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.challenges h3 {
+  color: #3498db;
+  margin: 1.5rem 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .project-top-section {
+    flex-direction: column;
+  }
+  
+  .features-list {
+    columns: 1;
+  }
+}
