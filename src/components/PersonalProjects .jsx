@@ -48,30 +48,7 @@ function PersonalProjects() {
   return (
     <div className="personal-projects-container">
 
-      
-       <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => navigate(-1)}
-        className="back-btn"
-        style={{
-          position: 'absolute',
-          top: '20px',
-          left: '20px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          padding: '8px 16px',
-          background: '#f5f5f5',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          zIndex: 100
-        }}
-      >
-        <FiArrowLeft className="icon" />
-        Back to Projects
-      </motion.button>
+     
       <h1 className="projects-title">My Personal Projects</h1>
       <div className="projects-grid">
         {projects.map((project) => (

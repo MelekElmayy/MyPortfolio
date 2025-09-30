@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaMobileAlt, FaGamepad, FaUtensils, FaClock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 import "../assets/styling/AcademicProjects.css";
 // Restaurant Delivery images
-import restauranDelivery from "../assets/restaurantDelivery.png";
 import RestaurantGif from "../assets/RestaurantGIF.gif";
 
 // Sponsofy App images
@@ -19,9 +18,6 @@ import platformPick from "../assets/Sponsofy/PlatformPick.png";
 // Gaming Platform GIFs
 import ShapeMAtcherGIF from "../assets/Gamezone/ShapeMatcherGIF.gif";
 import SnakeGif from "../assets/Gamezone/SnakeGameGif.gif";
-
-
-
 
 import { motion } from "framer-motion";
 import { FiArrowLeft } from "react-icons/fi";
@@ -73,32 +69,19 @@ function AcademicProjects() {
     navigate(`/projects/${projectId}`);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
+      document.body.classList.toggle("scrolled-to-bottom", scrolledToBottom);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="academic-projects-container-xx">
-
-       <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => navigate(-1)}
-              className="back-btn"
-              style={{
-                position: 'absolute',
-                top: '20px',
-                left: '20px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 16px',
-                background: '#f5f5f5',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                zIndex: 100
-              }}
-            >
-              <FiArrowLeft className="icon" />
-              Back to Projects
-            </motion.button>
+      
       <div className="academic-projects-xx">
         <h1>My Academic Projects</h1>
         <p className="subtitle-xx">
@@ -277,6 +260,10 @@ function AcademicProjects() {
           </div>
         </section>
       </div>
+      <button className="back-btn-bottom" onClick={() => navigate(-1)}>
+        <FiArrowLeft className="icon" />
+        Back to Projects
+      </button>
     </div>
   );
 }

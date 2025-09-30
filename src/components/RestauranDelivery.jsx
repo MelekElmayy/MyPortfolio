@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -10,16 +10,61 @@ import {
   FiCreditCard,
   FiHome,
 } from "react-icons/fi";
-// import restauranDelivery from "../assets/restaurantDelivery.png";
 
-import RestaurantGIF from '../assets/RestaurantGIF.gif'
+import "../assets/styling/RestaurantDelivery.css";
+import RestaurantGIF from "../assets/RestaurantGIF.gif";
 
 const RestaurantDelivery = () => {
   const navigate = useNavigate();
+  const [showBackButton, setShowBackButton] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top when page loads
     document.title = "Restaurant Delivery Platform | My Portfolio";
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if scrolled to bottom
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+
+      setShowBackButton(scrolledToBottom);
+
+      // Original functionality for body class
+      document.body.classList.toggle("scrolled-to-bottom", scrolledToBottom);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const contributions = [
+    {
+      icon: <FiShield />,
+      title: "Secure Authentication",
+      description:
+        "Implemented JWT and Auth0 for secure user authentication, reducing security vulnerabilities by 80% and improving login success rates.",
+    },
+    {
+      icon: <FiCreditCard />,
+      title: "Payment System",
+      description:
+        "Developed secure payment processing with Stripe integration, implementing PCI-compliant checkout flows and fraud detection.",
+    },
+    {
+      icon: <FiHome />,
+      title: "Home Page Development",
+      description:
+        "Designed and implemented the responsive home page with optimized performance (95+ Lighthouse score) and intuitive navigation.",
+    },
+    {
+      icon: <FiServer />,
+      title: "API Security",
+      description:
+        "Enhanced backend security with rate limiting, CORS policies, and input validation, reducing malicious requests by 90%.",
+    },
+  ];
 
   return (
     <motion.div
@@ -28,17 +73,8 @@ const RestaurantDelivery = () => {
       exit={{ opacity: 0 }}
       className="project-detail-page"
     >
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => navigate(-1)}
-        className="back-btn"
-      >
-        <FiArrowLeft className="icon" />
-        Back to Projects
-      </motion.button>
-
-      <motion.div
+      {/* Hero Section */}
+      <motion.section
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2 }}
@@ -64,7 +100,7 @@ const RestaurantDelivery = () => {
               href="https://github.com/dash-dash-dash2/dash-dash"
               target="_blank"
               rel="noopener noreferrer"
-              className="link-btn"
+              className="link-btn primary"
             >
               <FiGithub className="icon" />
               View Code
@@ -82,76 +118,45 @@ const RestaurantDelivery = () => {
           </div>
         </div>
         <div className="hero-image">
-          <motion.img
+          <motion.div
             whileHover={{ scale: 1.03 }}
-            src={RestaurantGIF}
-            alt="Restaurant Delivery Platform"
-          />
+            className="image-placeholder"
+          >
+            <img
+              src={RestaurantGIF}
+              alt="Restaurant Delivery Demo"
+              style={{ width: "100%", borderRadius: "10px" }}
+            />
+          </motion.div>
         </div>
-      </motion.div>
+      </motion.section>
 
-      <div className="project-content">
-        <motion.section
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="highlight-section"
-        >
+      {/* Contributions Section */}
+      <section className="contributions-section">
+        <div className="container">
           <h2 className="section-title">My Key Contributions</h2>
           <div className="contributions-grid">
-            <motion.div whileHover={{ y: -5 }} className="contribution-card">
-              <div className="highlight-icon">
-                <FiShield />
-              </div>
-              <h3>Secure Authentication</h3>
-              <p>
-                Implemented JWT and Auth0 for secure user authentication,
-                reducing security vulnerabilities by 80% and improving login
-                success rates.
-              </p>
-            </motion.div>
-
-            <motion.div whileHover={{ y: -5 }} className="contribution-card">
-              <div className="highlight-icon">
-                <FiCreditCard />
-              </div>
-              <h3>Payment System</h3>
-              <p>
-                Developed secure payment processing with Stripe integration,
-                implementing PCI-compliant checkout flows and fraud detection.
-              </p>
-            </motion.div>
-
-            <motion.div whileHover={{ y: -5 }} className="contribution-card">
-              <div className="highlight-icon">
-                <FiHome />
-              </div>
-              <h3>Home Page Development</h3>
-              <p>
-                Designed and implemented the responsive home page with optimized
-                performance (95+ Lighthouse score) and intuitive navigation.
-              </p>
-            </motion.div>
-
-            <motion.div whileHover={{ y: -5 }} className="contribution-card">
-              <div className="highlight-icon">
-                <FiServer />
-              </div>
-              <h3>API Security</h3>
-              <p>
-                Enhanced backend security with rate limiting, CORS policies, and
-                input validation, reducing malicious requests by 90%.
-              </p>
-            </motion.div>
+            {contributions.map((contribution, index) => (
+              <motion.div
+                key={index}
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 + index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="contribution-card"
+              >
+                <div className="highlight-icon">{contribution.icon}</div>
+                <h3>{contribution.title}</h3>
+                <p>{contribution.description}</p>
+              </motion.div>
+            ))}
           </div>
-        </motion.section>
+        </div>
+      </section>
 
-        <motion.section
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="challenges-section"
-        >
+      {/* Challenges Section */}
+      <section className="challenges-section">
+        <div className="container">
           <h2 className="section-title">Challenges & Solutions</h2>
           <div className="challenges-timeline">
             <div className="timeline-item">
@@ -166,9 +171,49 @@ const RestaurantDelivery = () => {
                 </p>
               </div>
             </div>
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>Real-time Order Tracking</h3>
+                <p>
+                  Implementing real-time order tracking with Socket.io presented
+                  scalability challenges. I optimized the WebSocket connections
+                  and implemented a efficient data update system that reduced
+                  latency by 40% while maintaining connection stability.
+                </p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>Mobile Responsiveness</h3>
+                <p>
+                  Ensuring the platform worked seamlessly across all device
+                  sizes required a mobile-first approach with extensive testing.
+                  I implemented responsive breakpoints and touch-friendly
+                  interfaces that improved mobile conversion rates by 25%.
+                </p>
+              </div>
+            </div>
           </div>
-        </motion.section>
-      </div>
+        </div>
+      </section>
+
+      {/* Back Button - Only shows when at bottom of page */}
+      {showBackButton && (
+        <motion.button
+          className="back-btn"
+          onClick={() => navigate(-1)}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <FiArrowLeft className="icon" />
+          Back to Projects
+        </motion.button>
+      )}
     </motion.div>
   );
 };

@@ -12,9 +12,7 @@ function About() {
   return (
     <div className="about-page">
       <section className="about-hero">
-        <h1>
-          About <span>Me</span>
-        </h1>
+        <h1>About Me</h1>
         <p className="subtitle">
           Full-Stack Developer | Problem Solver | Tech Enthusiast
         </p>
@@ -42,7 +40,7 @@ function About() {
             <FaReddit className="social-icon" />
           </a>
           <a
-            href="https://github.com/MelekElmayy" // replace with your actual GitHub profile link
+            href="https://github.com/MelekElmayy"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -58,32 +56,10 @@ function About() {
               <FaLaptopCode className="section-icon" /> My Journey
             </h2>
             <p>
-              I'm <span className="keyword">Melek Elmay</span>, I started
-              learning <span> </span>
-              <span className="keyword">JavaScript</span>,{" "}
-              <span className="keyword">HTML</span>, and <span> </span>
-              <span className="keyword">CSS</span> on my own for one year, then
-              joined <span> </span>
-              <span className="keyword">RBK</span>, one of the most prestigious
-              academies in <span> </span>
-              <span className="keyword">Tunisia</span>. I gained a lot of skills
-              during my <span> </span>
-              <span className="keyword">1,300+ hours of training</span>. I was
-              introduced to a lot of valuable concepts, gained a lot of
-              knowledge, and this made many things easier for me now.
+              I'm Melek Elmay, a passionate developer who started learning JavaScript, HTML, and CSS on my own before joining RBK, one of the most prestigious academies in Tunisia. Through 1,300+ hours of intensive training, I developed strong technical skills and problem-solving abilities.
             </p>
             <p>
-              What excites me most about{" "}
-              <span className="keyword">development</span> is solving{" "}
-              <span> </span>
-              <span className="keyword">complex problems</span> and creating
-              solutions that make a <span> </span>
-              <span className="keyword">real impact</span>. I approach every
-              project with <span> </span>
-              <span className="keyword">attention to detail</span> and a
-              commitment to writing <span> </span>
-              <span className="keyword">clean</span>,{" "}
-              <span className="keyword">efficient code</span>.
+              What excites me most about development is solving complex problems and creating solutions that make a real impact. I approach every project with attention to detail and a commitment to writing clean, efficient code.
             </p>
           </div>
         </div>
@@ -91,25 +67,13 @@ function About() {
         <div className="about-section">
           <div className="about-text">
             <h2>
-              <FaGraduationCap className="section-icon" /> Education &
-              Background
+              <FaGraduationCap className="section-icon" /> Education & Background
             </h2>
             <p>
-              My background in <span className="keyword">RBK</span> has given me
-              a strong foundation in
-              <span className="keyword">Backend</span> and{" "}
-              <span className="keyword">Frontend</span>. I'm constantly learning
-              new technologies and frameworks to stay at the forefront of{" "}
-              <span className="keyword">web development</span>.
+              My training at RBK provided me with a comprehensive foundation in both backend and frontend development. I'm committed to continuous learning and staying current with the latest technologies in web development.
             </p>
             <p>
-              When I'm not coding, you can find me
-              <span className="keyword">Playing VolleyBall</span>,
-              <span className="keyword">Pool</span>,
-              <span className="keyword">watching a movie</span> or
-              <span className="keyword">going out with my friends</span>. These
-              activities help me maintain a creative and balanced approach to my
-              work.
+              Outside of coding, I enjoy playing volleyball, pool, watching movies, and spending time with friends. These activities help me maintain creativity and balance in my life.
             </p>
           </div>
         </div>
@@ -122,8 +86,7 @@ function About() {
             <p>I believe in building applications that are:</p>
             <ul className="approach-list">
               <li>
-                <strong>User-Centered:</strong> Designed with the end-user
-                always in mind
+                <strong>User-Centered:</strong> Designed with the end-user always in mind
               </li>
               <li>
                 <strong>Performant:</strong> Optimized for speed and efficiency
@@ -144,28 +107,15 @@ function About() {
               <FaTools className="section-icon" /> Beyond Coding
             </h2>
             <p>
-              I'm passionate about more than just{" "}
-              <span className="keyword">writing code</span>. I actively
-              contribute in <span className="keyword">Reddit</span>,{" "}
-              <span className="keyword">Medium</span> and{" "}
-              <span className="keyword">LinkedIn</span>. <span> </span>
-              <span className="keyword">Sharing knowledge</span> and{" "}
-              <span> </span>
-              <span className="keyword">
-                collaborating with other developers
-              </span>{" "}
-              is something I truly value.
+              I'm passionate about sharing knowledge and actively contribute on Reddit, Medium, and LinkedIn. Collaborating with other developers and helping the community grow is something I truly value.
             </p>
-
             <p>
-              Whether you're looking to build a new project, improve an existing
-              one, or just connect with a fellow developer, I'd love to hear
-              from you!
+              Whether you're looking to build a new project, improve an existing one, or just connect with a fellow developer, I'd love to hear from you!
             </p>
-            <a href="/contact" className="btn">
+            <a href="https://www.linkedin.com/in/melek-elmay-321159278/" className="btn">
               Get In Touch
             </a>
-          </div>
+          </div> 
         </div>
       </section>
     </div>

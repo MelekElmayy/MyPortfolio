@@ -1,17 +1,17 @@
-/* Sponsofy Project Styles - Rebuilt */
+/* Restaurant Delivery Project Styles - Rebuilt */
 :root {
-  --primary: #0078D4;
-  --primary-dark: #323130;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
   --secondary: #64748b;
   --light: #f8fafc;
   --white: #ffffff;
   --border: #e2e8f0;
   --text-dark: #1e293b;
   --text-light: #64748b;
-  --accent-blue: #e0e7ff;
-  --accent-light: #f0f4ff;
-  --shadow: 0 4px 6px rgba(0, 120, 212, 0.08);
-  --shadow-hover: 0 8px 25px rgba(0, 120, 212, 0.15);
+  --accent-blue: #dbeafe;
+  --accent-light: #e0f2fe;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
 }
 
@@ -93,7 +93,7 @@ body {
 
 .tag {
   background-color: var(--accent-light);
-  color: var(--primary);
+  color: #0369a1;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -168,12 +168,11 @@ body {
   height: 300px;
   max-width: 500px;
   border-radius: 12px;
-  background: linear-gradient(45deg, var(--accent-blue), var(--accent-light), var(--accent-blue));
+  background: linear-gradient(45deg, #dbeafe, #e0f2fe, #dbeafe);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-hover);
-  overflow: hidden;
 }
 
 .placeholder-text {
@@ -347,16 +346,6 @@ body {
   color: var(--text-light);
   line-height: 1.6;
   font-size: 1.05rem;
-  margin-bottom: 1rem;
-}
-
-.feature-gif {
-  width: 100%;
-  max-height: 300px;
-  border-radius: 8px;
-  margin-top: 1rem;
-  box-shadow: var(--shadow);
-  object-fit: contain;
 }
 
 /* Back Button */
@@ -376,14 +365,14 @@ body {
   cursor: pointer;
   font-weight: 600;
   transition: var(--transition);
-  box-shadow: 0 8px 20px rgba(0, 120, 212, 0.3);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
   z-index: 1000;
 }
 
 .back-btn:hover {
   background: var(--primary-dark);
   transform: translateX(-50%) translateY(-3px);
-  box-shadow: 0 12px 25px rgba(0, 120, 212, 0.4);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.4);
 }
 
 .back-btn .icon {

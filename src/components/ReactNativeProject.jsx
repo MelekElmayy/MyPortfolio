@@ -1,297 +1,314 @@
-import React from "react";
-import "../assets/styling/Sponsofy.css";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
-  FaHandshake,
-  FaFileContract,
-  FaChartLine,
-  FaMobile,
-  FaServer,
-} from "react-icons/fa";
+  FiArrowLeft,
+  FiGithub,
+  FiExternalLink,
+  FiFileText,
+  FiTrendingUp,
+  FiSmartphone,
+  FiDatabase,
+  FiUser,
+  FiImage,
+} from "react-icons/fi";
+import { FaHandshake } from "react-icons/fa";
 
+import "../assets/styling/Sponsofy.css";
 import MulterGif from "../assets/PersonalProjects/Multer.gif";
 import Criteria from "../assets/PersonalProjects/criteria-subcriteria.gif";
 import ContractsDeals from "../assets/PersonalProjects/Contracts-Deal.gif";
 import EditProfile from "../assets/PersonalProjects/EditPRofile.gif";
 import SocialMediaStats from "../assets/PersonalProjects/SocialMediaStats.gif";
 import TransationHistory from "../assets/PersonalProjects/TransactionHistory.gif";
-
 import SignUp from "../assets/SignUP.gif";
 import OnBoarding from "../assets/OnBoarding.gif";
 
-
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import { FiArrowLeft } from "react-icons/fi";
-
-
 function ReactNativeProject() {
+  const navigate = useNavigate();
+  const [showBackButton, setShowBackButton] = useState(false);
 
-   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Sponsofy | My Portfolio";
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+      setShowBackButton(scrolledToBottom);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const contributions = [
+    {
+      icon: <FiUser />,
+      title: "User Onboarding Implementation",
+      description:
+        "Designed and implemented the onboarding flow allowing users to choose between Company or Content Creator profiles with appropriate redirects to signup/login screens.",
+    },
+    {
+      icon: <FaHandshake />,
+      title: "Authentication System",
+      description:
+        "Built complete signup/login functionality for both Company and Content Creator profiles, including Multer integration for file uploads during registration.",
+    },
+    {
+      icon: <FiFileText />,
+      title: "Content Creator Profile Management",
+      description:
+        "Developed the complete profile system for content creators including editing capabilities, social media integration, and verification processes.",
+    },
+    {
+      icon: <FiDatabase />,
+      title: "Database Modeling & Relationships",
+      description:
+        "Designed and implemented the database schema with proper table relationships in collaboration with team members, ensuring data integrity and performance.",
+    },
+  ];
+
   return (
-    <main className="comfy-store-xx">
-
-       <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => navigate(-1)}
-        className="back-btn"
-        style={{
-          position: 'absolute',
-          top: '20px',
-          left: '20px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          padding: '8px 16px',
-          background: '#f5f5f5',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          zIndex: 100
-        }}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="project-detail-page"
+    >
+      {/* Hero Section */}
+      <motion.section
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="project-hero"
       >
-        <FiArrowLeft className="icon" />
-        Back to Projects
-      </motion.button>
-      <section className="project-overview-xx">
-        <article className="project-description-xx">
-          <h1 className="project-title-xx">Sponsofy</h1>
-
-          <p className="project-summary-xx">
-            Bridging the gap between content creators and brands through
-            <span className="highlight-xx"> smart contracts</span> and
-            <span className="highlight-xx">
-              {" "}
-              milestone-based collaborations
-            </span>
-            .
-            <br />
-            <br />
-            <p>
-              In this project, I handled all{" "}
-              <span className="highlight-xx">backend</span> tasks related to the <span> </span>
-              <span className="highlight-xx">content creator</span>, including{" "}
-              <span className="highlight-xx">modeling</span> the <span> </span>
-              <span className="highlight-xx">database tables</span>, setting up{" "}
-              <span className="highlight-xx">relationships</span> in
-              collaboration with my teammates, and building the <span> </span>
-              <span className="highlight-xx">controllers</span> and{" "}
-              <span className="highlight-xx">routes</span> on the
-              <span className="highlight-xx">server side</span>. On the{" "}
-              <span className="highlight-xx">frontend</span>, I followed the <span> </span>
-              <span className="highlight-xx">Figma</span> design we created at
-              the start of the project and implemented the
-              <span className="highlight-xx">screens</span> using{" "}
-              <span className="highlight-xx">React Native</span>.
-            </p>
+        <div className="hero-content">
+          <h1>Sponsofy</h1>
+          <p className="subtitle">
+            Bridging content creators and brands through smart contracts and
+            milestone-based collaborations
           </p>
-
-          <div className="tech-tags-xx">
-            <span className="tech-tag-xx">React Native</span>
-            <span className="tech-tag-xx">Node.js</span>
-            <span className="tech-tag-xx">MySql</span>
-            <span className="tech-tag-xx">Express Js</span>
-            <span className="tech-tag-xx">Auth0</span>
-            <span className="tech-tag-xx">Sequelize</span>
-            <span className="tech-tag-xx">Axios</span>
+          <div className="tags">
+            <span className="tag">React Native</span>
+            <span className="tag">Node.js</span>
+            <span className="tag">MySQL</span>
+            <span className="tag">Express.js</span>
+            <span className="tag">Auth0</span>
+            <span className="tag">Sequelize</span>
+            <span className="tag">Axios</span>
           </div>
-
-          <div className="project-links-xx">
-            <a
+          <div className="project-links">
+            <motion.a
+              whileHover={{ y: -3 }}
               href="https://github.com/final-project-teams/Sponsofy"
               target="_blank"
               rel="noopener noreferrer"
-              className="link-button-xx"
+              className="link-btn primary"
             >
-              View on GitHub
-            </a>
+              <FiGithub className="icon" />
+              View Code
+            </motion.a>
           </div>
-        </article>
-      </section>
-
-      <section className="learnings-grid-xx">
-        <section className="features-container-xx">
-          <article className="feature-card-xx">
-            <div className="feature-content-xx">
-              <h3 className="feature-title-xx">
-                <FaHandshake className="feature-icon-xx" /> User Onboarding
-              </h3>
-              <p className="feature-description-xx">
-                The onboarding will allow the user to choose which profile they
-                want to create: a Company Profile or a Content Creator Profile.
-                They will then be redirected to the appropriate signup and login
-                screens.
-              </p>
-            </div>
+        </div>
+        <div className="hero-image">
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            className="image-placeholder"
+          >
             <img
               src={OnBoarding}
-              alt="Creator-Company Matching"
-              className="feature-gif-xx"
+              alt="Sponsofy App Demo"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: "12px",
+              }}
             />
-          </article>
+          </motion.div>
+        </div>
+      </motion.section>
 
-          <article className="feature-card-xx">
-            <div className="feature-content-xx">
-              <h3 className="feature-title-xx">
-                <FaHandshake className="feature-icon-xx" /> Sign Up / Login –
-                Company & Content Creator
-              </h3>
-              <p className="feature-description-xx">
-                Implemented everything necessary for signup and login, from
-                front to back, and added Multer functionality during signup.
-              </p>
-            </div>
-            <img
-              src={SignUp}
-              alt="Creator-Company Matching"
-              className="feature-gif-xx"
-            />
-          </article>
+      {/* Contributions Section */}
+      <section className="contributions-section">
+        <div className="container">
+          <h2 className="section-title">My Key Contributions</h2>
+          <div className="contributions-grid">
+            {contributions.map((contribution, index) => (
+              <motion.div
+                key={index}
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 + index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="contribution-card"
+              >
+                <div className="highlight-icon">{contribution.icon}</div>
+                <h3>{contribution.title}</h3>
+                <p>{contribution.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <article className="feature-card-xx">
-            <div className="feature-content-xx">
-              <h3 className="feature-title-xx">
-                <FaHandshake className="feature-icon-xx" /> Selecting The
-                Criteria & SubCriteria
-              </h3>
-              <p className="feature-description-xx">
-                The task was to implement both the front end and the backend
-                related to selecting the criteria and the subcriteria, from
-                creating
-              </p>
+      {/* Features Section */}
+      <section className="challenges-section">
+        <div className="container">
+          <h2 className="section-title">Features & Implementation</h2>
+          <div className="challenges-timeline">
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>User Onboarding</h3>
+                <p>
+                  The onboarding allows users to choose between creating a
+                  Company Profile or a Content Creator Profile, with appropriate
+                  redirects to specialized signup and login screens.
+                </p>
+                <img
+                  src={OnBoarding}
+                  alt="User Onboarding"
+                  className="feature-gif"
+                />
+              </div>
             </div>
-            <img
-              src={Criteria}
-              alt="Creator-Company Matching"
-              className="feature-gif-xx"
-            />
-          </article>
-
-          <article className="feature-card-xx">
-            <div className="feature-content-xx">
-              <h3 className="feature-title-xx">
-                <FaFileContract className="feature-icon-xx" /> Contracts & Deals
-              </h3>
-              <p className="feature-description-xx">
-                I made sure that the content Creator receive the deals and the
-                contracts, so He can Accept or deny deal, and see information
-                about the contracts, so he can move to signing it
-              </p>
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>Sign Up / Login – Company & Content Creator</h3>
+                <p>
+                  Implemented complete authentication flow from frontend to
+                  backend, including Multer functionality for file uploads
+                  during signup.
+                </p>
+                <img
+                  src={SignUp}
+                  alt="Sign Up Process"
+                  className="feature-gif"
+                />
+              </div>
             </div>
-            <img
-              src={ContractsDeals}
-              alt="Smart Contracts"
-              className="feature-gif-xx"
-            />
-          </article>
-
-          <article className="feature-card-xx">
-            <div className="feature-content-xx">
-              <h3 className="feature-title-xx">
-                <FaChartLine className="feature-icon-xx" /> Transaction History
-              </h3>
-              <p className="feature-description-xx">
-                Every Transaction need to be visible to the content Creator so
-                He can track his income, also to keep record of the payment
-                made.
-              </p>
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>Criteria & SubCriteria Selection</h3>
+                <p>
+                  Implemented both frontend and backend for selecting criteria
+                  and subcriteria, creating a structured system for matching
+                  creators with appropriate brands.
+                </p>
+                <img
+                  src={Criteria}
+                  alt="Criteria Selection"
+                  className="feature-gif"
+                />
+              </div>
             </div>
-            <img
-              src={TransationHistory}
-              alt="Milestone Tracking"
-              className="feature-gif-xx"
-            />
-          </article>
-
-          <article className="feature-card-xx">
-            <div className="feature-content-xx">
-              <h3 className="feature-title-xx">
-                <FaMobile className="feature-icon-xx" /> Edit Profile
-              </h3>
-              <p className="feature-description-xx">
-                The Content Creator must be able to edit His Profile Infos so It
-                can be visible to companies, who complete the milstones. Also
-                The Profile Infos can tell about the niche of the content
-                Creator
-              </p>
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>Contracts & Deals Management</h3>
+                <p>
+                  Developed a system for content creators to receive, review,
+                  accept, or deny deals and contracts, with complete information
+                  visibility before signing.
+                </p>
+                <img
+                  src={ContractsDeals}
+                  alt="Contracts and Deals"
+                  className="feature-gif"
+                />
+              </div>
             </div>
-            <img
-              src={EditProfile}
-              alt="Cross-Platform Mobile App"
-              className="feature-gif-xx"
-            />
-          </article>
-
-          <article className="feature-card-xx feature-card-wide-xx">
-            <div className="feature-content-xx">
-              <h3 className="feature-title-xx">
-                <FaServer className="feature-icon-xx" /> Views & Likes
-              </h3>
-              <p className="feature-description-xx">
-                The content Creator Can Add information about his account`s
-                numbe of followers, views and likes. Also He can Images from his
-                instagram ,Youtube , Facebook or Tiktok and add the number of
-                likes and views on each POst. These infos will be checked by the
-                Admin, also By the company itself That Offers a deal.
-              </p>
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>Transaction History</h3>
+                <p>
+                  Created a comprehensive transaction tracking system allowing
+                  content creators to monitor their income and maintain payment
+                  records.
+                </p>
+                <img
+                  src={TransationHistory}
+                  alt="Transaction History"
+                  className="feature-gif"
+                />
+              </div>
             </div>
-            <img
-              src={SocialMediaStats}
-              alt="Robust Backend"
-              className="feature-gif-xx"
-            />
-          </article>
-
-          <article className="feature-card-xx feature-card-wide-xx">
-            <div className="feature-content-xx">
-              <h3 className="feature-title-xx">
-                <FaServer className="feature-icon-xx" /> Uploadding Images &
-                Multer
-              </h3>
-              <p className="feature-description-xx">
-                Using Multer to Upload and delete my Images was really a special
-                Experience for me. It was a new concept and experience for me
-                and also A bit Challenging , for a first Timer.
-              </p>
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>Profile Editing</h3>
+                <p>
+                  Implemented profile editing functionality allowing content
+                  creators to update their information, making it visible to
+                  companies and reflecting their niche expertise.
+                </p>
+                <img
+                  src={EditProfile}
+                  alt="Profile Editing"
+                  className="feature-gif"
+                />
+              </div>
             </div>
-            <img
-              src={MulterGif}
-              alt="Robust Backend"
-              className="feature-gif-xx"
-            />
-          </article>
-        </section>
-
-        <article className="learning-card-xx learning-card-wide-xx">
-          <h3 className="learning-title-xx">My Key Contributions</h3>
-          <div className="contributions-content-xx">
-            <div className="contribution-item-xx">
-              <h4>Implemented the onboarding of the app</h4>
-              <p>
-                Designed and implemented the Solidity-based contract system that
-                automatically releases payments upon milestone completion.
-              </p>
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>Social Media Analytics Integration</h3>
+                <p>
+                  Developed a system for content creators to add follower
+                  counts, views, likes, and post analytics from various social
+                  platforms, with verification processes for companies and
+                  admins.
+                </p>
+                <img
+                  src={SocialMediaStats}
+                  alt="Social Media Analytics"
+                  className="feature-gif"
+                />
+              </div>
             </div>
-            <div className="contribution-item-xx">
-              <h4>
-                Both the login and signup of the company and the content Creator
-              </h4>
-              <p>
-                Developed the AI recommendation engine that pairs creators with
-                brands based on multiple compatibility factors.
-              </p>
-            </div>
-            <div className="contribution-item-xx">
-              <h4>The Profile of the content Creators</h4>
-              <p>
-                Created all React Native components with smooth animations and
-                intuitive navigation flows.
-              </p>
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>Image Upload with Multer</h3>
+                <p>
+                  Implemented Multer for efficient image upload and deletion
+                  functionality, providing a seamless media management
+                  experience for users.
+                </p>
+                <img
+                  src={MulterGif}
+                  alt="Image Upload with Multer"
+                  className="feature-gif"
+                />
+              </div>
             </div>
           </div>
-        </article>
+        </div>
       </section>
-    </main>
+
+      {/* Back Button - Only shows when at bottom of page */}
+      {showBackButton && (
+        <motion.button
+          className="back-btn"
+          onClick={() => navigate(-1)}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <FiArrowLeft className="icon" />
+          Back to Projects
+        </motion.button>
+      )}
+    </motion.div>
   );
 }
 

@@ -1,141 +1,216 @@
-import React from "react";
-import chatIOGif from "../assets/PersonalProjects/chat.io.gif";
-import "../assets/styling/chatIO.css";
-import { FaGithub } from "react-icons/fa"; // Import GitHub icon
-
-
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FiArrowLeft } from "react-icons/fi";
+import {
+  FiArrowLeft,
+  FiGithub,
+  FiExternalLink,
+  FiMessageSquare,
+  FiUsers,
+  FiClock,
+  FiSmartphone,
+  FiShield
+} from "react-icons/fi";
 
+import "../assets/styling/chatIO.css";
+import chatIOGif from "../assets/PersonalProjects/chat.io.gif";
 
 function ChatIO() {
+  const navigate = useNavigate();
+  const [showBackButton, setShowBackButton] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "ChatIO | My Portfolio";
+  }, []);
 
-       const navigate = useNavigate();
-  
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+      setShowBackButton(scrolledToBottom);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const contributions = [
+    {
+      icon: <FiMessageSquare />,
+      title: "Real-time Messaging",
+      description: "Implemented real-time chat functionality using Appwrite's subscription system, enabling instant message delivery across multiple chat rooms."
+    },
+    {
+      icon: <FiUsers />,
+      title: "User Authentication",
+      description: "Developed secure user authentication system with Appwrite, ensuring proper user management and session handling."
+    },
+    {
+      icon: <FiClock />,
+      title: "Online Presence",
+      description: "Created user presence indicators to show who's currently online, enhancing the real-time chat experience."
+    },
+    {
+      icon: <FiShield />,
+      title: "Appwrite Integration",
+      description: "Successfully integrated Appwrite backend services for database, authentication, and real-time functionality."
+    }
+  ];
+
   return (
-    <div className="chat-io-container">
-
-       <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => navigate(-1)}
-        className="back-btn"
-        style={{
-          position: 'absolute',
-          top: '20px',
-          left: '20px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          padding: '8px 16px',
-          background: '#f5f5f5',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          zIndex: 100
-        }}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="project-detail-page"
+    >
+      {/* Hero Section */}
+      <motion.section
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="project-hero"
       >
-        <FiArrowLeft className="icon" />
-        Back to Projects
-      </motion.button>
-      <div className="project-top-section">
-        <div className="project-intro">
-          <h1>Goals</h1>
+        <div className="hero-content">
+          <h1>ChatIO</h1>
           <p className="subtitle">
             Real-time chat application with React and Appwrite
           </p>
-
-          <div className="tech-stack">
-            <span className="tech-pill react">React</span>
-            <span className="tech-pill appwrite">Appwrite</span>
-            <span className="tech-pill css">CSS</span>
-            <span className="tech-pill react">Real Time</span>
+          <div className="tags">
+            <span className="tag">React</span>
+            <span className="tag">Appwrite</span>
+            <span className="tag">CSS</span>
+            <span className="tag">Real Time</span>
           </div>
-
-          <div className="brief-description">
-            <p>
-              As I was building projects with my friends the task of
-              implementing a Real Time chatting system was always assigned to
-              someone else. I did very much wanted to exploit this tech and know
-              About it , so I took upon myself to learn this new skill, and it
-              was a very enjoyable experience, as I had the oppurtunity to learn
-              about Appwrite As well.
-            </p>
-          </div>
-
           <div className="project-links">
-            <a
+            <motion.a
+              whileHover={{ y: -3 }}
               href="https://github.com/MelekElmayy/chat_tut"
               target="_blank"
               rel="noopener noreferrer"
-              className="link-button"
+              className="link-btn primary"
             >
-              <FaGithub className="github-icon" /> View on GitHub
-            </a>
+              <FiGithub className="icon" />
+              View Code
+            </motion.a>
           </div>
         </div>
-
-        <div className="project-demo">
-          <img src={chatIOGif} alt="Chat.IO Demo" className="demo-gif" />
+        <div className="hero-image">
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            className="image-placeholder"
+          >
+            <img
+              src={chatIOGif}
+              alt="ChatIO Demo"
+              style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }}
+            />
+          </motion.div>
         </div>
-      </div>
+      </motion.section>
 
-      <div className="project-details">
-        <section className="project-section">
-          <h2>Key Features</h2>
-          <div className="features-grid">
-            <div className="feature-card">
-              <span className="feature-highlight">User authentication</span> 
+      {/* Contributions Section */}
+      <section className="contributions-section">
+        <div className="container">
+          <h2 className="section-title">My Key Contributions</h2>
+          <div className="contributions-grid">
+            {contributions.map((contribution, index) => (
+              <motion.div
+                key={index}
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 + index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="contribution-card"
+              >
+                <div className="highlight-icon">{contribution.icon}</div>
+                <h3>{contribution.title}</h3>
+                <p>{contribution.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="challenges-section">
+        <div className="container">
+          <h2 className="section-title">Implementation Details</h2>
+          <div className="challenges-timeline">
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>Learning Appwrite</h3>
+                <p>
+                  I discovered Appwrite through tutorial videos and was impressed by its capabilities 
+                  as a backend solution. I decided to explore it further by building a real project.
+                </p>
+              </div>
             </div>
-            <div className="feature-card">
-              <span className="feature-highlight">Multiple chat rooms</span>
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>Real-time Implementation</h3>
+                <p>
+                  Establishing real-time connections using <code>client.subscribe()</code> and setting up 
+                  channels with Appwrite's database collections was surprisingly straightforward to implement.
+                </p>
+              </div>
             </div>
-            <div className="feature-card">
-              <span className="feature-highlight">Online user presence</span>
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>React.js Expertise</h3>
+                <p>
+                  Having prior experience with React.js made the frontend development process smooth and efficient, 
+                  allowing me to focus on implementing the real-time functionality.
+                </p>
+              </div>
             </div>
-            <div className="feature-card">
-              <span className="feature-highlight">Responsive design</span> 
-            </div>
-            <div className="feature-card">
-              <span className="feature-highlight">Message timestamps</span> 
+            <div className="timeline-item">
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3>Key Features</h3>
+                <div className="features-grid">
+                  <div className="feature-card">
+                    <span className="feature-highlight">User authentication</span> 
+                  </div>
+                  <div className="feature-card">
+                    <span className="feature-highlight">Multiple chat rooms</span>
+                  </div>
+                  <div className="feature-card">
+                    <span className="feature-highlight">Online user presence</span>
+                  </div>
+                  <div className="feature-card">
+                    <span className="feature-highlight">Responsive design</span> 
+                  </div>
+                  <div className="feature-card">
+                    <span className="feature-highlight">Message timestamps</span> 
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="project-section">
-          <h2>How I did it... </h2>
-          <div className="technical-details">
-            <p>
-              Saw a couple of videos using{" "}
-              <span className="keyword">Appwrite</span> as a{" "}
-              <span className="keyword">database</span> to store information. I
-              was really impressed, so I took it upon myself to try something
-              like that.
-            </p>
-
-            <p>
-              Establishing a{" "}
-              <span className="keyword">real-time connection</span> using a
-              method like <span> </span>
-              <span className="keyword">client.subscribe()</span>, and setting
-              up a channel with <span> </span>
-              <span className="keyword">
-                databases.$DATABASE_ID.collections.$COLLECTION_ID_MESSAGES.documents
-              </span><span> </span>
-              was surprisingly easy to implement.
-            </p>
-
-            <p>
-              I`m familiar with <span className="keyword">React.js</span>, so
-              using it was not much of a{" "}
-              <span className="keyword">challenge</span> for me.
-            </p>
-          </div>
-        </section>
-      </div>
-    </div>
+      {/* Back Button - Only shows when at bottom of page */}
+      {showBackButton && (
+        <motion.button
+          className="back-btn"
+          onClick={() => navigate(-1)}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <FiArrowLeft className="icon" />
+          Back to Projects
+        </motion.button>
+      )}
+    </motion.div>
   );
 }
 

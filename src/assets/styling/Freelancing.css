@@ -1,0 +1,81 @@
+.freelancing-page {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 20px;
+  background: #fff;
+  color: #323130;
+  text-align: center;
+}
+
+/* Story Section */
+.freelancing-story {
+  background: #f6fafd;
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 2px 8px rgba(0,120,212,0.07);
+  color: #323130;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  text-align: left;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.freelancing-story strong {
+  color: #0078D4;
+}
+
+/* Heading */
+.freelancing-page h1 {
+  color: #0078D4;
+  margin-bottom: 2rem;
+}
+
+.freelancing-projects-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.freelancing-project-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,120,212,0.08);
+  border-top: 4px solid #0078D4;
+  padding: 2rem;
+  width: 350px;
+  color: #323130;
+  text-align: left;
+  transition: box-shadow 0.3s;
+}
+
+.freelancing-project-card h2 {
+  color: #0078D4;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.freelancing-project-card p {
+  color: #323130;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .freelancing-story {
+    padding: 1rem 0.5rem;
+    font-size: 1rem;
+  }
+  .freelancing-projects-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .freelancing-project-card {
+    width: 100%;
+    max-width: 400px;
+  }
+}

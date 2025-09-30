@@ -1,51 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { FiArrowLeft } from "react-icons/fi";
 import FlappyBirdGIF from "../assets/Gamezone/FlappyBirdGIF.gif";
 import ShapeMatcherGIF from "../assets/Gamezone/ShapeMatcherGIF.gif";
 import SnakeGameGif from "../assets/Gamezone/SnakeGameGif.gif";
 import { FaGamepad, FaStar, FaCode, FaGithub } from "react-icons/fa";
-
-
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import { FiArrowLeft } from "react-icons/fi";
-
+import "../assets/styling/GameZone.css";
 
 function GameZone() {
-     const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [showBackButton, setShowBackButton] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top when page loads
+    const handleScroll = () => {
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+      setShowBackButton(scrolledToBottom);
+      document.body.classList.toggle("scrolled-to-bottom", scrolledToBottom);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="game-zone-container">
-      
       {/* Introduction Section */}
       <div className="games-intro">
-        
         <h1>
           My Game Development Journey <FaGamepad />
         </h1>
-        
-               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => navigate(-1)}
-                className="back-btn"
-                style={{
-                  position: 'absolute',
-                  top: '20px',
-                  left: '20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '8px 16px',
-                  background: '#f5f5f5',
-                  border: 'none',
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                  zIndex: 100
-                }}
-              >
-                <FiArrowLeft className="icon" />
-                Back to Projects
-              </motion.button>
+
         <p className="intro-text">
           Welcome to my game development showcase! Here you'll find projects
           I've built to explore different game mechanics, improve my programming
@@ -54,9 +40,9 @@ function GameZone() {
           represents a unique learning adventure.
         </p>
         <div className="github-button-container">
-          <a 
-            href="https://github.com/rbk-game-zone/game-zone" 
-            target="_blank" 
+          <a
+            href="https://github.com/rbk-game-zone/game-zone"
+            target="_blank"
             rel="noopener noreferrer"
             className="github-button"
           >
@@ -140,6 +126,22 @@ function GameZone() {
           </div>
         </div>
       </div>
+
+      {/* Back Button - Only shows when at bottom of page */}
+      {showBackButton && (
+        <motion.button
+          className="back-btn"
+          onClick={() => navigate(-1)}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <FiArrowLeft className="icon" />
+          Back to Projects
+        </motion.button>
+      )}
     </div>
   );
 }

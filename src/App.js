@@ -18,6 +18,9 @@ import Bankist from "./components/Bankist";
 import CartRedux from "./components/CartRedux";
 
 import Learning from "./components/Learning";
+import FreelancingProjects from "./components/FreelancingProjects";
+import FreelancingProjectOne from "./components/FreelancingProjectOne";
+import FreelanceSecondProject from "./Freelance/FreelanceSecondProject";
 
 import "./App.css";
 
@@ -38,6 +41,7 @@ function App() {
           path="/projects/restaurant-delivery"
           element={<RestauranDelivery />}
         />
+
         <Route path="/projects/game-zone" element={<GameZone />} />
         <Route path="/projects/Sponsofy" element={<ReactNativeProject />} />
 
@@ -46,7 +50,16 @@ function App() {
         <Route path="/projects/compfy-store" element={<CompfyStore />} />
         <Route path="/projects/redux-cart" element={<CartRedux />} />
 
-        <Route path="/projects/learning" element={<Learning />} />
+        <Route path="/learning" element={<Learning />} />
+        <Route path="/projects/freelance" element={<FreelancingProjects />} />
+        <Route
+          path="/freelancing/project-one"
+          element={<FreelancingProjectOne />}
+        />
+        <Route
+          path="/freelancing/project-two"
+          element={<FreelanceSecondProject />}
+        />
       </Routes>
     </Router>
   );

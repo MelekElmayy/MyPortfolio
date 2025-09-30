@@ -1,17 +1,17 @@
-/* Sponsofy Project Styles - Rebuilt */
+/* ReduxReact Project Styles - Rebuilt */
 :root {
-  --primary: #0078D4;
-  --primary-dark: #323130;
+  --primary: #0078D4; /* Replace any purple hex with this blue */
+  --primary-dark: #0066B2;
   --secondary: #64748b;
   --light: #f8fafc;
   --white: #ffffff;
   --border: #e2e8f0;
   --text-dark: #1e293b;
   --text-light: #64748b;
-  --accent-blue: #e0e7ff;
-  --accent-light: #f0f4ff;
-  --shadow: 0 4px 6px rgba(0, 120, 212, 0.08);
-  --shadow-hover: 0 8px 25px rgba(0, 120, 212, 0.15);
+  --accent-blue: #EDE9FE;
+  --accent-light: #F5F3FF;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
 }
 
@@ -71,7 +71,7 @@ body {
   color: var(--primary);
   margin-bottom: 1rem;
   line-height: 1.2;
-  background: linear-gradient(135deg, var(--primary), #4338ca);
+  background: linear-gradient(135deg, var(--primary), #5B21B6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -350,20 +350,41 @@ body {
   margin-bottom: 1rem;
 }
 
-.feature-gif {
-  width: 100%;
-  max-height: 300px;
-  border-radius: 8px;
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
   margin-top: 1rem;
+}
+
+.feature-card {
+  background-color: var(--accent-light);
+  border-radius: 8px;
+  padding: 1rem;
   box-shadow: var(--shadow);
-  object-fit: contain;
+  border: 1px solid var(--accent-blue);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: var(--transition);
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.feature-highlight {
+  color: var(--primary);
+  font-weight: 700;
 }
 
 /* Back Button */
 .back-btn {
   position: fixed;
   bottom: 2rem;
-  left: 50%;
+  left: 43%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
@@ -376,14 +397,14 @@ body {
   cursor: pointer;
   font-weight: 600;
   transition: var(--transition);
-  box-shadow: 0 8px 20px rgba(0, 120, 212, 0.3);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
   z-index: 1000;
 }
 
 .back-btn:hover {
   background: var(--primary-dark);
   transform: translateX(-50%) translateY(-3px);
-  box-shadow: 0 12px 25px rgba(0, 120, 212, 0.4);
+  box-shadow: 0 12px 25px rgba(124, 58, 237, 0.4);
 }
 
 .back-btn .icon {
@@ -453,6 +474,10 @@ body {
   .tags {
     justify-content: center;
   }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
@@ -490,5 +515,9 @@ body {
   
   .timeline-content p {
     font-size: 1rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
   }
 }
